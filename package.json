@@ -1,0 +1,22 @@
+{
+  "name": "bugfree",
+  "version": "1.0.0",
+  "description": "Bug tracking system provides facility to developers and test managers to track and manage bugs over local internet or server side. Bug tracking system help to manage development project as well as running project In many cases when new project comes and developers are making the API’s and the new views and other related things there are being many bugs and defect are occurs. When test manager test the API or views and any Bug, error, defect occurs test manager generate a bug report with the error details and severity and other required things",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "author": "KARNAV PARGI",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4",
+    "jsonwebtoken": "^5.7.0",
+    "mongoose": "^4.4.11",
+    "morgan": "^1.7.0",
+    "socket.io": "^1.4.5"
+  }
+  
+}

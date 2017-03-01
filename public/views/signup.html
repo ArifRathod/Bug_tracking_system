@@ -1,0 +1,44 @@
+<div class="col-md-12 w3-modal-content w3-card-12 w3-animate-top col-md-5 col-md-offset-3">
+<form name="myForm" class="w3-form" novalidate>
+            <div class="w3-center"><br>
+                <legend ng-hide="currentUser">Register</legend>
+            <legend ng-show="currentUser">Add new User</legend>
+            </div>
+
+            <div class="w3-container">
+              <div  class="w3-white w3-text-red w3-wide">{{message}}</div>
+                <div class="w3-section">
+                  <div class="w3-input-group">
+                    <input class="w3-input w3-border" type="email" name="email" ng-model="email" placeholder="Enter Email Address" ng-required="required" autofocus>
+                    <span class="w3-text-red" ng-show="myForm.email.$invalid &&  myForm.email.$dirty && myForm.email.$error">Enter Valid Email Address</span>
+                  </div>
+                  <div class="w3-input-group">
+                    <input class="w3-input w3-border" minlength="3" ng-model="firstname" name="firstname" type="text" placeholder="Enter First Name" ng-required="required">
+                    <span class="w3-text-red" ng-show="myForm.firstname.$invalid && myForm.firstname.$touched && myForm.firstname.$dirty && myForm.firstname.$error">Enter Valid Email Address</span>
+                    </div>
+                  <div class="w3-input-group">
+                    <input class="w3-input w3-border" type="text" name="lastname" minlength="3" ng-model="lastname" placeholder="Enter Last Name" ng-required="required">
+                    <span class="w3-text-red" ng-show="myForm.lastname.$invalid && myForm.lastname.$touched && myForm.lastname.$dirty && myForm.lastname.$error">Enter Valid Email Address</span>
+                    </div>
+                  <div class="w3-input-group">
+                    <input class="w3-input w3-border" type="password" name="password" minlength="3" ng-model="password" placeholder="Enter Password" ng-required="required">
+                    <span class="w3-text-red" ng-show="myForm.password.$invalid && myForm.password.$touched && myForm.password.$dirty && myForm.password.$error">Enter Valid Password</span>
+                    </div>
+                  <div class="w3-input-group">
+                    <select class="w3-input w3-border" ng-model="emptype" name="emptype" ng-required="required">
+                        <option value="">Select</option>
+                        <option ng-if="!currentUser" value="Admin">Admin</option>
+                        <option ng-if="currentUser" value="Developer">Developer</option>
+                        <option ng-if="currentUser" value="Test Manager">Test Manager</option>
+                        <option ng-if="currentUser" value="Project Manager">Project Manager</option>
+                    </select>
+                    </div>
+
+                  <div class="w3-input-group">
+                    <button ng-disabled="myForm.$invalid && myForm.$touched"  class=" w3-btn w3-hover-khaki w3-blue pull-right w3-text-shadow" ng-click="signup()">&#10004;<b>Register</b></button>
+                    <a ng-if="!currentUser"  href="/login" class="pull-left w3-btn w3-green">&#10001;Login</a>
+                    </div>
+                </div>
+            </div>
+</form>
+        </div>

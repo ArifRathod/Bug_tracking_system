@@ -1,0 +1,173 @@
+<section class="w3-container w3-animate-top" ng-init="init()">
+    <div class="w3-card col-xs-12 ">
+        <div class="w3-form">
+            <form name="myForm" novalidate >
+                <fieldset><legend class="w3-btn-block w3-teal">Bug Details</legend></fieldset>
+
+                <div class="col-md-12">
+                    <div>
+                        <label>Created By</label>
+                  <input type="text" class="w3-input w3-border"  name="createdby" data-ng-model="currentUser.firstname" disabled="disabled">
+              </div><div>
+              <label>Bug Status Default:</label>
+                    <input type="text" class="w3-input w3-border " name="bugstaus" ng-model="New" disabled>
+                </div><div>
+                <label>Select Project to Continue</label>
+                    <select name="projectname" class="w3-input w3-border " ng-model="number" ng-options='number.projectname for number in projectData' required="required">
+                        <option value="">Select Project</option>
+                    </select>
+                   <p ng-show="myForm.projectname.$invalid && myForm.projectname.$touched"><span class="w3-text-red"> please select project </span></p>
+                    </div>
+
+                  <p class="has-error w3-text-red center-block" >{{message}}{{err}}{{error}}</p>
+                    <div class="col-sm-6">
+                        <div class="w3-group">
+                            <label class="w3" for="">Bug Name*:</label>
+                            <input class="w3-input w3-border" type="text" name="bugname" ng-model="bugname" placeholder="Bug Name" autofocus required>
+                        </div>
+                        <!--section Start-->
+                        <div class="col-md-5">
+                            <div class="w3-group">
+                                <label class="w3" for="">Tags: </label>
+                                <input class="w3-input w3-border" type="text" name="tags" ng-model="tags" placeholder="Add Tags">
+                            </div>
+
+                            <div class="w3-group">
+                                <label class="w3" for="">Assigned to*:</label>
+                                <select name="assignto" class="w3-input w3-border " ng-model="assignto" required>
+                                  <option value=""> Assign to </option>
+                                    <option value="Unassigned" selected="selected"> Unassigned </option>
+                                    <optgroup label="Developer">
+                                        <option value="{{currentUSer.firstname}}">Developer Name</option>
+                                    </optgroup>
+                                    <optgroup label="Test Manager">
+                                        <option value="{{currentUSer.firstname}}">Test Manager Name</option>
+                                    </optgroup>
+                                </select>
+                              </div>
+                              <div class="w3-group">
+                                <label for="">Project sections</label>
+                                <select name="projectsection" class="w3-input w3-border" ng-model="projectsection">
+                                    <option value="">Project sections</option>
+                                    <option value="frontend">Frontend</option>
+                                    <option value="backend">backend</option>
+                                    <option value="UI View">UI View</option>
+                                    <option value="validation">Validation</option>
+                                    <option value="all">...</option>
+                                </select>
+                            </div>
+                            <div class="w3-group ">
+                                <label for="">Priority</label>
+                                <select name="priority"  class="w3-input w3-border" ng-model="priority">
+                                    <option value="">Select Priority...</option>
+                                    <option value="optional">optional</option>
+                                    <option value="Low">Low</option>
+                                    <option value="medium">Medium</option>
+                                    <option value="High">High</option>
+                                    <option value="Critical">Critical</option>
+                                </select>
+                            </div>
+                        </div>
+                        <!--one section end -->
+                        <!-- section start -->
+                        <div class="col-sm-6 pull-right">
+                            <div class="w3-group">
+                                <label for="">Found in version</label>
+                                <input name="foundinversion" class="w3-input w3-border" ng-model="foundinversion" placeholder="Found in version" required>
+                            </div>
+                            <div class="w3-group ">
+                                <label for="">Bug Type</label>
+                                <select name="bugtype"  class="w3-input w3-border" ng-model="bugtype">
+                                    <option value="">Select type...</option>
+                                    <option value="Functional">Functional</option>
+                                    <option value="Usability">Usability</option>
+                                    <option value="text">Text</option>
+                                    <option value="visual">Visual</option>
+                                    <option value="User input Data">User input Data</option>
+                                    <option value="Suggestion">Suggestion</option>
+                                </select>
+                            </div>
+                            <div class="w3-group ">
+                                <label for="">Severity*: </label>
+                                <select name="severity"  class="w3-input w3-border" ng-model="severity" required>
+                                    <option value="">Select...</option>
+                                    <option value="Trival">Trival</option>
+                                    <option value="Minor">Minor</option>
+                                    <option value="Major">Major</option>
+                                    <option value="Critical">Critical</option>
+                                </select>
+                            </div>
+                            <div class="w3-group ">
+                                <label for="">Reproducibility*: </label>
+                                <select name="reproducibility"  class="w3-input w3-border" ng-model="reproducibility">
+                                    <option value="">Select...</option>
+                                    <option value="Always">Always</option>
+                                    <option value="Sometime">Sometime</option>
+                                    <option value="Random">Random</option>
+                                    <option value="Once">Once</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <!--Partition-->
+                    <div class="col-sm-5 pull-right">
+                        <div class="col-sm-5">
+                        <div class="w3-group ">
+                            <label for="">Device type: </label>
+                            <select name="devicetype" id="" class="w3-input w3-border" ng-model="devicetype">
+                                <option value="">Select...</option>
+                                <option value="Android Phone">Android Phone</option>
+                                <option value="Android Tablet">Android Tablet</option>
+                                <option value="blackberry">blackberry</option>
+                                <option value="Feature Phone">Feature Phone</option>
+                                <option value="ipad">ipad</option>
+                                <option value="iphone">iphone</option>
+                                <option value="ipod Touch">ipod Touch</option>
+                                <option value="Mac Computer">Mac Computer</option>
+                                <option value="Windows PC">Windows PC</option>
+                                <option value="Windows Phone">Windows Phone</option>
+                                <option value="Random">Other</option>
+                            </select>
+                        </div>
+                        <div class="w3-group ">
+                            <label for="">Operating System </label>
+                            <input class="w3-border w3-input" type="text" name="os" placeholder="Operating System" ng-model="os">
+                        </div>
+                    </div> <!-- section -->
+                        <div class="col-sm-5 pull-right">
+                        <div class="w3-group ">
+                            <label for="">Device: </label>
+                            <input class="w3-border w3-input" type="text" name="model" placeholder="Device Model" ng-model="model">
+                        </div>
+                        <div class="w3-group ">
+                            <label for="">Browser: </label>
+                            <input type="text" class="w3-input w3-border" name="browser" placeholder="Browser type" ng-model="browser">
+                        </div>
+                            </div>
+                        <div class="w3-group">
+                            <label for="">Description: </label>
+                            <textarea name="bugdesc" id="desc" cols="63" ng-model="bugdesc"></textarea>
+                        </div>
+                        <div class="w3-group">
+                            <label for="">Expecte Results: </label>
+                            <textarea name="expectedresult" id="expected" cols="63" ng-model="expectedresult"></textarea>
+                        </div>
+                        <div class="w3-group">
+                            <label for="">Steps to reproduce: </label>
+                            <input type="text" name="stepstoreproduce" class="w3-border w3-input" placeholder="Enter..." ng-model="stepstoreproduce">
+                        </div>
+                        <button type="reset" class="w3-btn w3-green">&#10006; Reset </button>
+                        <button ng-disabled="myForm.projectname.$invalid" class="w3-btn w3-hover-amber w3-blue pull-right w3-text-shadow" ng-click="submit_Click()">&#10004;<b> Submit </b></button>
+                    </div>
+                    <!--partition end-->
+
+                </div>
+                <!--  main partition end    -->
+
+
+            </form>
+        </div>
+    </div>
+</section>

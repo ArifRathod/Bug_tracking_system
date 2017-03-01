@@ -1,0 +1,116 @@
+<section class="w3-form w3-margin">
+<form class="col-md-5 w3-margin w3-center" ng-init="init()">
+    <fieldset>
+        <legend class="w3-show-block w3-indigo">Project Stats</legend>
+        <table class="w3 w3-table">
+            <thead>
+            <tr>
+                <th>Bug Status</th>
+                <th>No.of Bugs</th>
+               
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td class="w3-text-red">New</td>
+                <td>{{NewCount}}</td>
+            </tr>
+            <tr>
+                <td class="w3-text-yellow">Confirmed</td>
+                <td>{{confirmedCount}}</td>
+            </tr>
+            <tr>
+                <td style="color: green">Acknowledge</td>
+                <td>{{acknowledgeCount}}</td>
+            </tr>
+            <tr>
+                <td style="color: blue">In Progress</td>
+                <td>{{inprogressCount}}</td>
+            </tr>
+            <tr>
+                <td style="color:violet">Feedback</td>
+                <td>{{feedbackCount}}</td>
+            </tr>
+            <tr>
+                <td style="color: orange">Resolved</td>
+                <td>{{resolvedCount}}</td>
+            </tr>
+            <tr>
+                <td style="color: #8c8c8c">Closed</td>
+                <td>{{closedCount}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </fieldset>
+</form>
+<form action="" class="col-md-5 w3-margin w3-center  pull-right" >
+    <fieldset>
+        <legend class="w3-show-block w3-center w3-indigo">SEVERITY</legend>
+        <div class="col-md-5 w3-margin w3-show-block w3-card-8 ">
+        <label for="" class="w3-label w3-show-block w3-red w3-wide">CRITICAL</label>
+         <p><span class="w3-badge w3-large  w3-padding-large w3-white w3-text-red ">{{CriticalCount}}</span></p>
+        </div>
+        <div class="col-md-5 w3-margin w3-card-8">
+            <label for="" class="w3-label w3-deep-orange w3-wide w3-show-block">MAJOR</label>
+            <p><span class="w3-badge w3-large w3-padding-large w3-white w3-text-deep-orange ">{{MajorCount}}</span></p>
+        </div>
+        <div class="col-md-5 w3-margin w3-card-8">
+            <label for="" class="w3-label w3-orange w3-text-white w3-wide w3-show-block">MINOR</label>
+            <p><span class="w3-badge w3-large w3-padding-large w3-white w3-text-orange ">{{MinorCount}}</span></p>
+        </div>
+        <div class="col-md-5 w3-margin w3-card-8 ">
+            <label for="" class="w3-label w3-blue w3-wide w3-show-block">TRIVAL</label>
+            <p><span class="w3-badge w3-large w3-padding-large w3-white w3-text-blue ">{{TrivalCount}}</span></p>
+        </div>
+    </fieldset>
+</form>
+<legend></legend>
+    <form class="w3-form">
+        <fieldset>
+        <legend class="w3-btn w3-medium w3-center w3-indigo" data-toggle="collapse" data-target="#project_list">
+            Project Bug List<span class="pull-right glyphicon glyphicon-th-list   "></span></legend>
+
+        <div id="project_list" class="w3 collapse in">
+              <a href="/enterBugs" class="w3-btn w3-orange pull-right">Report Bug</a>
+
+            <table datatable="ng" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
+                <tr class="w3-text-red">
+
+                    <th>No.</th>
+                    <th>Title</th>
+                     <th>project</th>
+                    <th>severity</th>
+                    <th>Priority</th>
+                    <th>Status</th>
+                    <th>Type</th>
+                    <th>Section</th>
+                    <th>Version</th>
+                    <th>ReportedBy</th>
+                    <th>Updated</th>
+                    <th>Assigned</th>
+                  <th>Action</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr class="w3" name="new" ng-repeat="bugsdata in bugsdata">
+                  <td>{{$index}}<input type="hidden" value="{{bugsdata._id}}"></td>
+                    <td>{{bugsdata.bugname}}</td>
+                     <td>{{bugsdata.projectname}}</td>
+                    <td>{{bugsdata.severity}}</td>
+                    <td>{{bugsdata.priority}}</td>
+                  <td>{{bugsdata.bugstatus}}</td>
+                  <td>{{bugsdata.bugtype}}</td>
+                  <td>{{bugsdata.projectsection}}</td>
+                  <td>{{bugsdata.foundinversion}}</td>
+                  <td>{{bugsdata.reportedby}}</td>
+                  <td>{{bugsdata.timestamp | date}}</td>
+                  <td>{{bugsdata.assignto}}</td>
+                  <td><a ng-click="update($index)" href="/viewBugs">Edit</a></td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+        </fieldset>
+    </form>
+</section>

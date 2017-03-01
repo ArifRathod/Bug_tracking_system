@@ -1,0 +1,144 @@
+<section class="w3-card-4 w3-animate-top" ng-init="getBugDetails()">
+    <div class="w3-card col-xs-12 ">
+        <div class="w3-form">
+        <form  class="w3-form" >
+            <div class="w3-card col-md-3 pull-left">
+             <legend class="w3-show-block w3-indigo">Bug No:-</legend>
+             <input type="hidden" ng-model="ViewBugData._id" >
+                <div class="w3-input-group">
+                    <label class="w3-wide">BUG NAME</label>
+                    <br>
+                    <div class="w3-text-blue"><h5><img style="width:20%" src="img/bug.png" alt="">&nbsp;&nbsp;&nbsp; {{ViewBugData.bugname}}</h5></div>
+                </div>
+                <legend></legend>
+                <LABEL class="w3-wide">BUG DETAILS</LABEL>
+                <br>
+                <div class="w3-form">
+                <label class="w3-label">Found in version </label>
+                    <p class="w3-input w3-center">{{ViewBugData.foundinversion}}</p>
+                </div>
+                <div class="w3-form">
+                    <label class="w3-label">Fixed in version </label>
+                    <p class="w3-input w3-center">{{ViewBugData.foundinversion}}</p>
+                </div>
+                <div class="w3-form">
+                    <label class="w3-label">Project sections </label>
+                    <p class="w3-input w3-center">{{ViewBugData.projectsection}}</p>
+                </div>
+                <div class="w3-form">
+                    <label class="w3-label">Type </label>
+                    <p class="w3-input w3-center">{{ViewBugData.bugtype}}</p>
+                </div>
+                <div class="w3-form">
+                    <label class="w3-label">Reporter </label>
+                    <p class="w3-input w3-center">{{ViewBugData.reportedby}}</p>
+                </div>
+                <div class="w3-form">
+                    <label class="w3-label">Severity </label>
+                    <p class="w3-input w3-center">{{ViewBugData.severity}}</p>
+                </div>
+                <div class="w3-form">
+                    <label class="w3-label">Reproducibility </label>
+                    <p class="w3-input w3-center">{{ViewBugData.reproducibility}}</p>
+                </div>
+                 <legend></legend>
+                <LABEL class="w3-wide">TAG</LABEL>
+                <br>
+                <div class="w3-form">
+                    <label class="w3-label"> </label>
+                    <p class="w3-input w3-center">{{ViewBugData.tags}}</p>
+                </div>
+                <legend></legend>
+                <LABEL class="w3-wide">PLATEFORM DETAILS</LABEL>
+                <br>
+                <div class="w3-form">
+                    <label class="w3-label"> </label>
+                    <p class="w3-input w3-center">{{ViewBugData.os}}</p>
+                </div>
+                <legend></legend>
+                <LABEL class="w3-wide">QUICK UPDATE</LABEL>
+
+                <div class="w3-form">
+                    <label class="w3-label">Status</label>
+                    <select class="w3-input w3-border" ng-model="bugstatus">
+                        <option value="">Select</option>
+                        <option value="new">new</option>
+                        <option value="Confirm">Confirm</option>
+                        <option value="Acknowledged">Acknowleged</option>
+                        <option value="Inprogress">In Progress</option>
+                        <option value="feedback">Feedback</option>
+                        <option value="Resolved">Resolved</option>
+                        <option value="Closed">Closed</option>
+                    </select>
+                </div>
+                <div class="w3-form">
+                    <label class="w3-label">Assigne To</label>
+                    <select class="w3-input w3-border" ng-model="assignto" ng-change="getuser()">
+                        <option value="Unassigned">Unassigned</option>
+                        <option value="Developer">Developer</option>
+                        <option value="Test Manager">Test Manager</option>
+                    </select>
+                    <select id="userdetails" class="w3-input w3-border" ng-model="assigntouser">
+                        <option value="{{u.firstname}}" ng-repeat="u in Developer">{{u.firstname}}</option>
+                        </option>
+                    </select>
+                </div>
+                
+<div class="w3-input-group">
+  <button class="w3-btn w3-amber" ng-click="updatebug()">Update</button>
+</div>
+            </div>
+            <!--Bug information-->
+            <div class="w3-card col-md-8 pull-right pull-right">
+
+                <legend class="w3-btn-block w3-indigo">Bug Information</legend>
+                <div class="w3-form">
+                <LABEL class="w3-label">Description</LABEL>
+                <br>
+                <div class="w3-form w3-margin">
+                <p>{{ViewBugData.bugdesc}} </p>
+                </div></div>
+
+                <legend></legend>
+                <div class="w3-form">
+                <LABEL class="w3-label">Expected Result</LABEL>
+                <br>
+                <div class="w3-form w3-margin">
+                        {{ViewBugData.expectedresult}}
+                </div>
+                    </div>
+                <legend></legend>
+                <div class="w3-form">
+                <LABEL class="w3-label">Steps To reproduce</LABEL>
+                <br>
+                    <div class="w3-form w3-margin">
+                          <p>{{ViewBugData.stepstoreproduce}}</p>
+                    </div>
+                </div>
+                <legend></legend>
+                 <div class="w3-form">
+                <LABEL class="w3-label">Comment</LABEL>
+                <br>
+                    <div class="w3-form w3-margin">
+                        <textarea class="w3-input w3-border comment" rows="5" cols="7" placeholder="please type valid comment" value="{{ViewBugData.comment}}">{{ViewBugData.comment}}</textarea>
+                    </div>
+                </div>
+<legend></legend>
+                <legend>Bugs History</legend>
+                <table class="table table-striped table-bordered" ng-repeat="bughis in bughistory" cellspacing="0" width="100%">
+                <tr class="w3" name="new" >
+                    <td width="20%"><p>reportedby:{{bughis.reportedby}}</p>
+                        <p>assign to : {{bughis.assignto}}</p>
+                        <p>Time: {{bughis.timestamp | date : 'dd-MM-yyyy HH:mm:ss'}}</p>
+                    </td>
+                  <td width="20%">{{bughis.bugstatus}}</td>
+                  <td >{{bughis.comment}}</td>
+                </tr>
+            </table>
+            </div> 
+
+
+        </form>
+            </div>
+        </div>
+</section>

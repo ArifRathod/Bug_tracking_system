@@ -1,0 +1,25 @@
+<form ng-controller="dashboard">
+<nav class="navbar navbar">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a ng-if="!currentUser" class="navbar-brand" href="/login"><img style="width:50%" src="img/logo.png" alt=""></a>
+      <a ng-if="currentUser" class="navbar-brand" href="/dashboard"><img style="width:50%" src="img/logo.png" alt=""></a>
+    </div> 
+    <ul class="nav navbar-nav">
+    
+      <li class="active"><a href="/dashboard">Home</a></li>
+      <li id="userpanel"><a href="/userPanel">User Panel</a></li>
+      <li><a href="/newProject">Add Project</a></li>
+      <li><a href="/">About Us</a></li>
+
+    </ul>
+
+    <ul class="nav navbar-nav navbar-right" >
+      <li ng-if="!currentUser"><a href="/signup"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+      <li ng-if="!currentUser"><a href="/login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      <li ng-if="currentUser"><a href=""><span class="glyphicon glyphicon-user"></span>  Welcome  {{currentUser.firstname | uppercase}}  </a></li>
+      <li ng-if="currentUser" class="pull-right"><a href="/login" ng-click="logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a> </li>
+    </ul>
+  </div>
+</nav>
+</form>

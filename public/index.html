@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+    <base href="/">
+    <meta charset="UTF-8">
+    <title>bug-free Page</title>
+
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <!--<script src="https://code.jquery.com/jquery-1.12.0.min.js"></script>-->
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/angular-route/angular-route.min.js"></script>
+    <script src="/bower_components/angular-messages/angular-messages.min.js"></script>
+    <script src="/bower_components/respond/dest/respond.min.js"></script>
+    <script src="controllers/loginCtrl.js"></script>
+    <script src="controllers/signupCtrl.js"></script>
+    <script src="controllers/getUser.js"></script>
+    <script src="controllers/bugCtrl.js"></script>
+    <script src="controllers/projectCtrl.js"></script>
+    <script src="controllers/dashboardCtrl.js"></script>
+    <script src="controllers/userPanelCtrl.js"></script>
+    <script src="controllers/projectPanelCtrl.js"></script>    
+    
+
+    <!--Routes-->
+    <script src="app-route.js"></script>
+    <script src="app.js"></script>
+
+    <!--Bootstrap links-->
+    <link rel="stylesheet" href="library/main.css">
+    <link rel="stylesheet" href="/bower_components/w3.css">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap-theme.min.css">
+
+    <script src="/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="http://cdn.datatables.net/1.10.7/js/jquery.dataTables.min.js"></script>
+    <script src="/bower_components/angular/angular-datatables.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="http://cdn.datatables.net/1.10.7/css/jquery.dataTables.css">
+
+    <script src="/bower_components/w3.js"></script>
+</head>
+<body  class="w3-container w3-animate-top" ng-controller="myCtrl">
+
+<div ng-include="'views/nav.html'"></div>
+    <main  ng-view></main>
+
+</body>
+</html>

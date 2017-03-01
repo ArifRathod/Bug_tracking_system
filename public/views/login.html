@@ -1,0 +1,27 @@
+<section class="w3 w3-card-4 col-md-4 col-md-offset-4 w3-animate-top">
+  <form class="w3-form" name="Form"  novalidate>
+    <div class="w3-input-group w3-center w3-show-block w3-indigo "  ng-if="!currentUser">
+      <legend class="w3-label w3-text-white">Login Please</legend>
+    </div>
+    <div  class="w3-white w3-text-red">{{message}}</div>
+    <span class="w3-text-red" ng-show="Form.email.$touched && Form.email.$dirty && Form.email.$invalid">Enter Valid Email Address</span>
+    <span class="w3-text-red" ng-show="Form.password.$touched&& Form.password.$invalid && Form.password.$dirty">Enter Valid Password</span>
+    <div class="w3-input-group">
+      <label class="w3-text-indigo">Email Address</label>
+      <input class="w3-input" type="email" name="email" ng-model="email" ng-required="required" autofocus>
+    </div>
+    <div class="w3-input-group">
+      <label class="w3-text-indigo">Enter Password</label>
+      <input class="w3-input" type="password" name="password" minlength="3" ng-model="password" ng-required="required">
+    </div>
+    <button ng-disabled="Form.$invalid"  class=" w3-btn w3-hover-khaki w3-blue pull-right w3-text-shadow" ng-click="login()">&#10004;<b>Login</b></button>
+    <a  href="/signup" class="pull-left w3-btn w3-green">&#10001;  signUp</a>
+    <br>
+    <br>
+    <br>
+    </div>
+  </form>
+  <div ng-if="currentUser"><legend class="w3-show-block w3-margin text-center">You Are Already LoggedIn</legend>
+  <li class="w3-margin w3-btn w3-amber layout-align-center"><a href="/dashboard">Unlock please</a></li>
+  </div>
+</section>
